@@ -119,10 +119,11 @@ export default {
       overflow-x: scroll;
 
       li {
-        border: 1px solid @light-grey;
-        border-radius: 8px;
         min-width: 80px;
         margin: 0 10px;
+        border: 1px solid @light-grey;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
       }
     }
 
