@@ -107,6 +107,31 @@ export default {
       }
     }
   }
+
+  @media @tablet {
+    width: 100%;
+    height: fit-content;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+      overflow-x: scroll;
+
+      li {
+        border: 1px solid @light-grey;
+        border-radius: 8px;
+        min-width: 80px;
+        margin: 0 10px;
+      }
+    }
+
+    @media @smartphone {
+      ul {
+        justify-content: space-between;
+      }
+    }
+  }
 }
 
 </style>
