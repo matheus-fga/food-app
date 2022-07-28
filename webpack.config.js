@@ -8,7 +8,14 @@ module.exports = {
           'css-loader',
           'less-loader'
         ]
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          'babel-loader',
+          'vue-svg-loader',
+        ],
+      },
     ]
   }
 }
