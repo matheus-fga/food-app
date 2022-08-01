@@ -1,21 +1,28 @@
 <template>
-  <CategoryMenu />
+  <div class="home">
+    <CategoryMenu />
+    <ItemsContainer />
+  </div>
 </template>
 
 <script>
-import CategoryMenu from '@/components/CategoryMenu.vue';
-import axios from 'axios';
-
-export default {
-  name: 'HomeView',
-  components: {
-    CategoryMenu
-  },
-  created() {
-    axios.get('http://localhost:3000/burgers')
-    .then(response => {
-      console.log(response);
-    })
+  import CategoryMenu from '@/components/CategoryMenu.vue';
+  import ItemsContainer from '@/components/ItemsContainer.vue';
+  
+  export default {
+    name: 'HomeView',
+    components: {
+      CategoryMenu,
+      ItemsContainer
+    }
   }
-}
 </script>
+
+<style lang="less" scoped>
+
+.home {
+  display: flex;
+  position: ab;
+}
+
+</style>

@@ -58,8 +58,7 @@ export default {
 .category-menu {
   width: 130px;
   height: 100vh;
-  background: white;
-  position: fixed;
+  background: #FFF;
 
   display: flex;
   align-items: center;
