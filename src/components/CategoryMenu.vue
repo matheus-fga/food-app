@@ -10,7 +10,6 @@
         <component :is="category.icon" />
         <p>{{ category.label }}</p>
       </li>
-      
     </ul>
   </div>
 </template>
