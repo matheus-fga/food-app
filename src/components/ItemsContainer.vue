@@ -20,11 +20,28 @@ export default {
           itemsList: []
       };
   },
-  created() {
-      axios.get("http://localhost:3000/burgers")
+  mounted() {
+    this.getItemsList();
+  },
+  methods: {
+    getItemsList() {
+      axios.get(`http://localhost:3000/${this.selectedCategory}`)
           .then(response => {
           this.itemsList = response.data;
       });
+    }
+  },
+  computed: {
+    selectedCategory: {
+      get() {
+        return this.$store.state.selectedCategory;
+      }
+    }
+  },
+  watch: {
+    selectedCategory() {
+      this.getItemsList();
+    }
   }
 }
 </script>

@@ -34,7 +34,7 @@ export default {
     return {
       categoriesList: [
         { label: 'Pizza', icon: Pizza, id: 'pizza' },
-        { label: 'Burgers', icon: Burger, id: 'burger' },
+        { label: 'Burgers', icon: Burger, id: 'burgers' },
         { label: 'Combos', icon: Fries, id: 'combo' },
         { label: 'Bebidas', icon: Smoothie, id: 'drinks' },
         { label: 'Sorvetes', icon: IceCream, id: 'deserts' },
