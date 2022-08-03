@@ -1,6 +1,16 @@
 <template>
   <div class="item">
-    {{ item.quantity }}
+    <div class="item--quantity">
+      <button 
+        type="button" 
+        @click="updateQuantity({ action: 'dec', id: item.id })"
+        :disabled="item.quantity === 0"
+      >
+        -
+      </button>
+      <span class="number">{{ item.quantity }}</span>
+      <button type="button" @click="updateQuantity({ action: 'inc', id: item.id })">+</button>
+    </div>
     <div class="item--img-container">
       <img class="item--img" :src="imagePath" alt="item image" />
     </div>
@@ -13,6 +23,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'CartItem',
   props: {
@@ -21,7 +33,12 @@ export default {
       required: true
     }
   },
-   computed: {
+  methods: {
+    ...mapActions([
+      'updateQuantity'
+    ])
+  },
+  computed: {
     imagePath() {
       return require(`../assets/images/${this.item.id}.png`);
     }
@@ -43,10 +60,34 @@ export default {
   display: flex;
   align-items: center;
 
-  h3, p {
+  h3, p, button {
     font-weight: 600;
     font-size: 18px;
     margin: 0;
+  }
+
+  &--quantity {
+    display: flex;
+    align-items: center;
+    padding-right: 35px;
+
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+
+     &:disabled {
+      cursor: not-allowed;
+     }
+    }
+
+    .number {
+      width: 20px;
+      font-weight: 500;
+      font-size: 18px;
+      text-align: center;
+      color: @yellow;
+    }
   }
 
   &--img-container {

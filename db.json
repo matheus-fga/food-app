@@ -32,21 +32,21 @@
     "pizza": [
         {
             "id": "0005",
-            "name": "Calabresa",
+            "name": "Pizza Calabresa",
             "description": "Molho de tomate, calabresa e queijo",
             "price": 25.0,
             "offer": false
         },
         {
             "id": "0006",
-            "name": "4 Queijos",
+            "name": "Pizza 4 Queijos",
             "description": "Molho de tomate e 4 queijos",
             "price": 27.0,
             "offer": false
         },
         {
             "id": "0007",
-            "name": "Strogonoff",
+            "name": "Pizza Strogonoff",
             "description": "Molho de tomate e strogonoff de carne",
             "price": 29.0,
             "offer": false
@@ -94,14 +94,14 @@
     "combo": [
         {
             "id": "0013",
-            "name": "Combo 1",
+            "name": "Combo Burger",
             "description": "1 hamburguer duplo, 1 guaraná lata e 1 milkshake chocolate",
             "price": 50.0,
             "offer": false
         },
         {
             "id": "0014",
-            "name": "Combo 2",
+            "name": "Combo Pizza",
             "description": "2 pizzas",
             "price": 45.0,
             "offer": true
