@@ -69,15 +69,21 @@ export default {
   width: 100%;
   margin: 50px;
   display: flex;
-  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
 
   &.center {
     justify-content: center;
   }
 
   @media @tablet {
+    width: fit-content;
     margin: 10px;
     flex-wrap: wrap;
+
+    &.center {
+      width: 100%;
+    }
   }
 }
 

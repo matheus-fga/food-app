@@ -1,8 +1,8 @@
 <template>
-  <div class="item">
+  <div class="item" @click="addToCart">
     <div class="img-container">
       <div class="item--tag" v-if="item.offer">Oferta</div>
-      <img class="item--img" src="@/assets/images/0001.png" alt="item image">
+      <img class="item--img" :src="imagePath" alt="item image">
     </div>
     <div class="content">
       <h2 class="item--name">{{ item.name }}</h2>
@@ -16,12 +16,25 @@
 export default {
   name: 'ItemCard',
   props: {
-    item: {}
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    addToCart() {
+        this.$store.dispatch('addToCart', this.item);
+      }
+  },
+  computed: {
+    imagePath() {
+      return require(`../assets/images/${this.item.id}.png`);
+    }
   },
   filters: {
-    currency(value) {
-      return `R$ ${value.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`;
-    }
+      currency(value) {
+        return `R$ ${value.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`;
+      }
   }
 }
 </script>
@@ -37,12 +50,13 @@ export default {
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;
 
   p, h2 {
-    margin: 4px 0;
+    margin: 0;
     font-weight: 600;
     font-size: 18px;
   }
@@ -77,6 +91,14 @@ export default {
     color: @yellow;
   }
 
+  .content {
+    height: 100%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   @media @tablet {
     width: 100%;
     height: fit-content;
@@ -95,7 +117,7 @@ export default {
 
     &--img {
       width: 86px;
-      margin: 0 0 10px 0;
+      margin: 0 0 5px 0;
       order: 0;
     }
 
@@ -113,8 +135,7 @@ export default {
     }
 
     .content {
-      width: 100%;
-      margin-top: 5px;
+      flex: 1;
     }
   }
 }

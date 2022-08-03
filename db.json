@@ -1,31 +1,31 @@
 {
     "burgers": [
         {
-            "id": 1,
+            "id": "0001",
             "name": "Duplo Burger",
-            "description": "Pão, maionese, 2 carnes de 180g, alface, tomate, bacon e cebola roxa",
+            "description": "Pão, molho especial, 2 carnes de 180g, picles, bacon e queijo",
             "price": 25.0,
             "offer": true
         },
         {
-            "id": 2,
+            "id": "0002",
             "name": "Triplo Burger",
-            "description": "Pão, maionese, 3 carnes de 180g, alface, tomate, bacon e cebola roxa",
+            "description": "Pão, molho especial, 3 carnes de 180g, alface, tomate, bacon e queijo",
             "price": 32.0,
             "offer": true
         },
         {
-            "id": 3,
+            "id": "0003",
             "name": "Chicken Burger",
-            "description": "Pão, maionese, carne de frango, alface, tomate e queijo",
-            "price": 16.3,
+            "description": "Pão, maionese, 1 frango crispy, alface e queijo",
+            "price": 19.9,
             "offer": false
         },
         {
-            "id": 4,
-            "name": "Kids Burger",
-            "description": "Pão, maionese, 1 hamburguer de 180g e 1 fatia de queijo cheddar",
-            "price": 12.0,
+            "id": "0004",
+            "name": "Picanha Burger",
+            "description": "Pão, maionese, 2 hambúrgueres de picanha, alface, tomate, bacon e queijo",
+            "price": 40.0,
             "offer": false
         }
     ],
@@ -69,8 +69,8 @@
         },
         {
             "id": "0010",
-            "name": "Milshake",
-            "description": "Milskahe de chocolate",
+            "name": "Milkshake",
+            "description": "Milkshake de chocolate",
             "price": 10.0,
             "offer": false
         }

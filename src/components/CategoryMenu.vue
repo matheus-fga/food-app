@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       categoriesList: [
-        { label: 'Pizza', icon: Pizza, id: 'pizza' },
+        { label: 'Pizzas', icon: Pizza, id: 'pizza' },
         { label: 'Burgers', icon: Burger, id: 'burgers' },
         { label: 'Combos', icon: Fries, id: 'combo' },
         { label: 'Bebidas', icon: Smoothie, id: 'drinks' },
@@ -58,8 +58,10 @@ export default {
 
 .category-menu {
   width: 130px;
+  min-width: 130px;
   height: 100vh;
   background: #FFF;
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.04);
 
   display: flex;
   align-items: center;
