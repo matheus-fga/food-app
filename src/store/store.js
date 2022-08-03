@@ -13,15 +13,32 @@ export const store = new Vuex.Store({
       state.selectedCategory = id;
     },
     addToCart(state, item) {
-      state.cartList.push(item);
+      state.cartList.push({...item, quantity: 1});
+    },
+    increaseQuantity(state, index) {
+      state.cartList[index].quantity++;
     }
+
   },
   actions: {
     changeCategory(context, id) {
       context.commit('changeCategory', id);
     },
-    addToCart(context, item) {
-      context.commit('addToCart', item);
+    addToCart({ state, commit }, item) {
+      let itemIndex = null;
+      const hasItemInCart = state.cartList.find((cartItem, index) => {
+        if (cartItem.id === item.id) {
+          itemIndex = index;
+          return true;
+        }
+      });
+
+      if (!hasItemInCart) {
+        commit('addToCart', item);
+        return;
+      }
+      
+      commit('increaseQuantity', itemIndex);
     }
   }
 })
