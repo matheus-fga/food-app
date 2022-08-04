@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <router-link to="/cart" class="cart-icon" v-if="isSmallScreen">
+      <CartIcon />
+    </router-link>
     <CategoryMenu />
     <ItemsContainer />
     <CartContainer v-if="isDesktop"/>
@@ -13,12 +16,15 @@ import CartContainer from '@/components/CartContainer.vue';
 
 import Mixin from '@/mixins/mixins';
 
+import CartIcon from '@/assets/icons/cart.svg';
+
 export default {
   name: 'HomeView',
   components: {
     CategoryMenu,
     ItemsContainer,
-    CartContainer
+    CartContainer,
+    CartIcon
   },
   mixins: [Mixin]
 }
@@ -28,6 +34,18 @@ export default {
 
 .home {
   display: flex;
+
+  .cart-icon {
+    width: 40px;
+    height: 40px;
+    margin: 20px 20px 20px auto;
+    border-radius: 50%;
+    background: @pink;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
   @media @tablet {
     flex-direction: column;

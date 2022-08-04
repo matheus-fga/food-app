@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import Mixin from '@/mixins/mixins';
+
 export default {
   name: 'ItemCard',
   props: {
@@ -31,11 +33,7 @@ export default {
       return require(`../assets/images/${this.item.id}.png`);
     }
   },
-  filters: {
-      currency(value) {
-        return `R$ ${value.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`;
-      }
-  }
+  mixins: [Mixin]
 }
 </script>
 

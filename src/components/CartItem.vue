@@ -24,6 +24,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import Mixin from '@/mixins/mixins';
 
 export default {
   name: 'CartItem',
@@ -43,11 +44,7 @@ export default {
       return require(`../assets/images/${this.item.id}.png`);
     }
   },
-  filters: {
-      currency(value) {
-        return `R$ ${value.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`;
-      }
-  }
+  mixins: [Mixin]
 }
 </script>
 
@@ -120,6 +117,36 @@ export default {
 
   &--price {
     color: @yellow;
+  }
+
+  @media @tablet {
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: 80px 1fr;
+    grid-template-areas: 
+      "img content"
+      "quantity price"
+    ;
+
+    &--img-container {
+      grid-area: img;
+    }
+
+    .content {
+      grid-area: content;
+    }
+
+    &--quantity {
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      grid-area: quantity;
+    }
+
+    &--price {
+      padding: 0 20px;
+      grid-area: price;
+    }
   }
 }
 </style>
