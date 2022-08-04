@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <router-link to="/cart" class="cart-icon" v-if="isSmallScreen">
+    <router-link to="/cart" class="cart-icon">
       <CartIcon />
     </router-link>
     <CategoryMenu />
     <ItemsContainer />
-    <CartContainer v-if="isDesktop"/>
+    <CartContainer class="cart-container"/>
   </div>
 </template>
 
@@ -36,19 +36,27 @@ export default {
   display: flex;
 
   .cart-icon {
-    width: 40px;
-    height: 40px;
-    margin: 20px 20px 20px auto;
-    border-radius: 50%;
-    background: @pink;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
   }
   
   @media @tablet {
     flex-direction: column;
+
+    .cart-icon {
+      width: 40px;
+      height: 40px;
+      margin: 20px 20px 20px auto;
+      border-radius: 50%;
+      background: @pink;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-container {
+      display: none;
+    }
   }
 }
 

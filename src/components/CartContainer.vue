@@ -57,10 +57,7 @@ export default {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
 
   &--back {
-    font-weight: 600;
-    font-size: 18px;
-    text-decoration: none;
-    color: #111;
+    display: none;
   }
 
   &--title {
@@ -82,6 +79,14 @@ export default {
     width: 100%;
     min-width: unset;
     padding: 50px 20px 20px;
+
+    &--back {
+      display: block;
+      font-weight: 600;
+      font-size: 18px;
+      text-decoration: none;
+      color: #111;
+    }
   }
 }
 </style>
