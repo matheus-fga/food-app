@@ -1,16 +1,6 @@
 <template>
   <div class="item">
-    <div class="item--quantity">
-      <button 
-        type="button" 
-        @click="updateQuantity({ action: 'dec', id: item.id })"
-        :disabled="item.quantity === 0"
-      >
-        -
-      </button>
-      <span class="number">{{ item.quantity }}</span>
-      <button type="button" @click="updateQuantity({ action: 'inc', id: item.id })">+</button>
-    </div>
+    <ItemQuantity class="item--quantity" :item="item" />
     <div class="item--img-container">
       <img class="item--img" :src="imagePath" alt="item image" />
     </div>
@@ -23,28 +13,24 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import ItemQuantity from './ItemQuantity.vue';
 import Mixin from '@/mixins/mixins';
 
 export default {
-  name: 'CartItem',
-  props: {
-    item: {
-      type: Object,
-      required: true
-    }
-  },
-  methods: {
-    ...mapActions([
-      'updateQuantity'
-    ])
-  },
-  computed: {
-    imagePath() {
-      return require(`../assets/images/${this.item.id}.png`);
-    }
-  },
-  mixins: [Mixin]
+    name: "CartItem",
+    components: { ItemQuantity },
+    props: {
+      item: {
+          type: Object,
+          required: true
+      }
+    },
+    computed: {
+        imagePath() {
+            return require(`../assets/images/${this.item.id}.png`);
+        }
+    },
+    mixins: [Mixin],
 }
 </script>
 
@@ -57,34 +43,10 @@ export default {
   display: flex;
   align-items: center;
 
-  h3, p, button {
+  h3, p {
+    margin: 0;
     font-weight: 600;
     font-size: 18px;
-    margin: 0;
-  }
-
-  &--quantity {
-    display: flex;
-    align-items: center;
-    padding-right: 35px;
-
-    button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-
-     &:disabled {
-      cursor: not-allowed;
-     }
-    }
-
-    .number {
-      width: 20px;
-      font-weight: 500;
-      font-size: 18px;
-      text-align: center;
-      color: @yellow;
-    }
   }
 
   &--img-container {
@@ -138,8 +100,6 @@ export default {
 
     &--quantity {
       padding: 0;
-      align-items: center;
-      justify-content: center;
       grid-area: quantity;
     }
 
