@@ -1,15 +1,18 @@
 <template>
   <div class="cart">
-    <router-link to="/" class="cart--back">←️ Voltar</router-link>
+    <router-link to="/" class="cart--back" v-if="isSmallScreen">←️ Voltar</router-link>
     <h2 class="cart--title">Seu pedido</h2>
-    <CartItem 
-      v-for="item in cart" 
-      :key="item.id" 
-      :item="item"
-    />
-    <div class="cart--total">
-      <span>Total: </span>
-      <span class="price">{{ getCartTotal | currency }}</span>
+    <p v-if="hasNoItemInCart">Seu carinho está vazio</p>
+    <div v-else class="cart-content">
+      <CartItem
+        v-for="item in cart" 
+        :key="item.id" 
+        :item="item"
+       />
+      <div class="cart--total">
+        <span>Total: </span>
+        <span class="price">{{ getCartTotal | currency }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +37,9 @@ export default {
         },
         set() {
         }
+      },
+      hasNoItemInCart() {
+        return !this.cart.length
       }
     },
     mixins: [Mixin]

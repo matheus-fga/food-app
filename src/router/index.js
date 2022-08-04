@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CartView from '../views/CartView.vue'
+import AddToCartView from '../views/AddToCartView.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,12 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: CartView
+  },
+  {
+    path: '/addToCart/:id',
+    name: 'addToCart',
+    component: AddToCartView,
+    props: true
   }
 ]
 
