@@ -1,5 +1,5 @@
 export default {
-  computed: {
+  methods: {
     isDesktop() {
       const width = window.innerWidth;
       return width > 768;

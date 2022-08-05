@@ -5,10 +5,11 @@
       <ItemCard class="content--item" :item="item" />
       <div class="content--quantity-container">
         <span>Quantidade</span>
-        <ItemQuantity class="item-quantity" :item="item" />
+        <ItemQuantity class="item-quantity" :item="item" :useStore="false"/>
       </div>
       <p>Observações:</p>
       <textarea v-model="obsevation" rows="7"></textarea>
+      <button type="button" class="primary-button">Adicionar ao carinho</button> 
     </div>
   </div>
 </template>
@@ -41,24 +42,32 @@ export default {
     }
   },
   mounted() {
-    this.isLoading = true;
+    if (this.itemInCart) {
+      this.item = this.itemInCart;
+      this.isLoading = false;
+      return;
+    }
+
     setTimeout(() => {
       axios.get(`http://localhost:3000/${this.selectedCategory}/${this.id}`)
         .then(response => {
-          this.item = response.data;
+          this.item = { ...response.data, quantity: 1 };
         })
         .finally(() => {
           this.isLoading = false;
         });
-    }, 2000);
+    }, 1000);
   },
   computed: {
     selectedCategory: {
       get() {
         return this.$store.state.selectedCategory;
       }
+    },
+    itemInCart() {
+      return this.$store.getters.getItemById(this.id);
     }
-  },
+  }
 }
 </script>
 
@@ -107,6 +116,10 @@ export default {
       padding: 15px;
       border-radius: 8px;
       border: 1px solid #dadada;
+    }
+
+    .primary-button {
+      flex: 1
     }
   }
 }

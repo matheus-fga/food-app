@@ -2,13 +2,13 @@
   <div class="item-quantity">
     <button 
       type="button" 
-      @click="updateQuantity({ action: 'dec', id: item.id })"
-      :disabled="item.quantity === 0"
+      @click="handleQuantityButtonClick('dec')"
+      :disabled="isDisabled"
     >
       -
     </button>
-    <span class="number">{{ item.quantity }}</span>
-    <button type="button" @click="updateQuantity({ action: 'inc', id: item.id })">+</button>
+    <span class="number">{{ useStore ? item.quantity : quantity }}</span>
+    <button type="button" @click="handleQuantityButtonClick('inc')">+</button>
   </div>
 </template>
 
@@ -21,12 +21,41 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    useStore: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    return {
+      quantity: this.item.quantity
     }
   },
   methods: {
     ...mapActions([
       'updateQuantity'
-    ])
+    ]),
+    handleQuantityButtonClick(action) {
+      if (this.useStore) {
+        this.updateQuantity({ action, id: this.item.id })
+        return;
+      }
+
+      if (action === 'inc') {
+        this.quantity++;
+      } else if (action === 'dec' && this.quantity > 1) {
+        this.quantity--;
+      }
+    }
+  },
+  computed: {
+    isDisabled() {
+      if (this.useStore) {
+        return this.item.quantity < 1;
+      }
+        return this.quantity <= 1;
+    }
   }
 }
 </script>

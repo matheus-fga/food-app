@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     addToCart() {
-      if (this.isDesktop) {
+      if (this.isDesktop()) {
           this.$store.dispatch('addToCart', this.item);
           return;
       }

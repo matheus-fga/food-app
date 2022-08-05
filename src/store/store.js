@@ -59,6 +59,9 @@ export const store = new Vuex.Store({
       return state.cartList.reduce((total, item) => (
         total + item.price * item.quantity
       ), initialTotal);
+    },
+    getItemById: (state) => (id) => {
+      return state.cartList.find(item => item.id === id);
     }
   }
 })
