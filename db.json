@@ -96,8 +96,8 @@
             "id": "0013",
             "name": "Combo Burger",
             "description": "1 hamburguer duplo, 1 guaraná lata e 1 milkshake chocolate",
-            "price": 50.0,
-            "offer": false
+            "price": 35.9,
+            "offer": true
         },
         {
             "id": "0014",

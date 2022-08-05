@@ -5,7 +5,9 @@
     </router-link>
     <CategoryMenu />
     <ItemsContainer />
-    <CartContainer class="cart-container"/>
+    <CartContainer class="cart-container">
+      <component :is="child_component"></component>
+    </CartContainer>
   </div>
 </template>
 
@@ -13,8 +15,7 @@
 import CategoryMenu from '@/components/CategoryMenu.vue';
 import ItemsContainer from '@/components/ItemsContainer.vue';
 import CartContainer from '@/components/CartContainer.vue';
-
-import Mixin from '@/mixins/mixins';
+import CartListContainer from '@/components/CartListContainer.vue';
 
 import CartIcon from '@/assets/icons/cart.svg';
 
@@ -24,9 +25,14 @@ export default {
     CategoryMenu,
     ItemsContainer,
     CartContainer,
-    CartIcon
+    CartIcon,
+    CartListContainer
   },
-  mixins: [Mixin]
+  data() {
+    return {
+      child_component: CartListContainer
+    }
+  }
 }
 </script>
 

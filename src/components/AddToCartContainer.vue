@@ -1,6 +1,6 @@
 <template>
   <div class="add-cart-container">
-    AddToCartContainer {{id}}
+   Hello {{id}}
   </div>
 </template>
 
